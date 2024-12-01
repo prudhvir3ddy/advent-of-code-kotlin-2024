@@ -65,6 +65,28 @@ fun main() {
         return finalCount
     }
 
+    fun part1_2(input: List<String>): Int {
+
+        val firstList = input.map {
+            it.split("   ")[0].toInt()
+        }.toMutableList()
+
+        val secondList = input.map {
+            it.split("   ")[1].toInt()
+        }.toMutableList()
+
+        firstList.sort()
+        secondList.sort()
+
+        var finalCount = 0
+
+        for (i in 0..firstList.lastIndex) {
+            finalCount += abs(secondList[i] - firstList[i])
+        }
+
+        return finalCount
+    }
+
     fun part2(input: List<String>): Int {
 
         val firstList = input.map {
@@ -93,4 +115,5 @@ fun main() {
     val input = readInput("Day01")
     part1(input).println()
     part2(input).println()
+    part1_2(input).println()
 }
