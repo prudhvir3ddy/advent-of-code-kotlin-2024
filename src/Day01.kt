@@ -7,42 +7,6 @@ enum class BinarySearchType {
     LAST
 }
 
-fun List<Int>.binarySearch(target: Int, searchType: BinarySearchType): Int {
-    var start = 0
-    var end = this.lastIndex
-
-    var result = -1
-
-    while (start <= end) {
-        val mid = start + (end - start) / 2
-
-        when {
-            target == this[mid] -> {
-                result = mid
-                when(searchType) {
-                    BinarySearchType.FIRST -> {
-                        end = mid - 1
-                    }
-
-                    BinarySearchType.LAST -> {
-                        start = mid + 1
-                    }
-                }
-            }
-
-            this[mid] > target -> {
-                end = mid - 1
-            }
-
-            else -> {
-                start = mid + 1
-            }
-        }
-    }
-
-    return result
-}
-
 fun main() {
 
     fun part1(input: List<String>): Int {
